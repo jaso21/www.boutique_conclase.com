@@ -17,4 +17,7 @@
     }
 
     $URL = "http://localhost/www.boutique_conclase.com";
+
+    date_default_timezone_set("America/La_Paz");
+    $fechaHora = date('Y-m-d h:i:s')
 ?>
