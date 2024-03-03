@@ -2,6 +2,21 @@
     include ('../app/config.php');
     include ('../layout/sesion.php');
     include ('../layout/parte1.php');
+
+    if(isset($_SESSION['mensaje'])){
+        $respuesta = $_SESSION['mensaje'];?>
+        <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "<?php echo $respuesta; ?>",
+            showConfirmButton: false,
+            timer: 2000
+        });
+        </script>
+<?php
+    unset($_SESSION['mensaje']);
+    }
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -40,26 +55,26 @@
                                     <form action="../app/controllers/usuarios/create.php" method="post">
                                         <div class="form-group">
                                             <label for="">Nombres</label>
-                                            <input type="text" name="nombres" class="form-control"
+                                            <input type="text" name="nombres" required class="form-control"
                                                 placeholder="Nombre completo del nuevo usuario...">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Email</label>
-                                            <input type="email" name="email" class="form-control"
+                                            <input type="email" name="email" required class="form-control"
                                                 placeholder="Correo del nuevo usuario...">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Contraseña</label>
-                                            <input type="text" name="password_user" class="form-control">
+                                            <input type="text" name="password_user" required class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Repita la Contraseña</label>
-                                            <input type="text" name="password_repeat" class="form-control">
+                                            <input type="text" name="password_repeat" required class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <a href="" class="btn btn-secondary">Cancelar</a>
+                                            <a href="index.php" class="btn btn-secondary">Cancelar</a>
                                             <button type="submit" class="btn btn-primary">Guardar</button>
                                         </div>
                                     </form>
